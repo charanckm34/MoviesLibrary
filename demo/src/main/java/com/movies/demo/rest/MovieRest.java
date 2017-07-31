@@ -79,23 +79,25 @@ private static List<Movie> movieList = new ArrayList<Movie>();
 	@GET
 	@Path("Movie")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Movie getmovieList(@QueryParam("year") String year) {
+	public List<Movie> getmovieList(@QueryParam("year") String year) {
 
-		return movieList.get(0);
-	/*Movie cli = null;
+		List<Movie> movieByYear = new ArrayList<Movie>();
 
+	System.out.println("Year " + year);
 	for (Movie m : movieList) {
+		System.out.println(m.getMovieYear());
+		if (m.getMovieYear().equals(year)) {
+			System.out.println("Inside List "+ m.getMovieYear());
+			movieByYear.add(m);
+		}
 
-	if (m.getMovieYear() == year)
-
-	cli = m;
-
+		if (movieByYear.isEmpty())
+		{
+			System.out.println("No Match Found");
+		}			
 	}
-
-	return cli.getMovieTitle(); */
-
-	}
-	
-	
-	
+	return movieByYear;
+//	movieByYear.add( movieList.get(0));
+//	return movieByYear;
+	}	
 }
